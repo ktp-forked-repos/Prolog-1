@@ -5,7 +5,7 @@ esplodi([A],A).
 esplodi([A,B],10 * A + B).
 esplodi([A,B,C],100 * A + 10 * B + C).
 
-calcolo_enigmatico(Nu1,Op1,Nu2,=,Nu3, % unico scopo degli '=' Ë la leggibilit‡
+calcolo_enigmatico(Nu1,Op1,Nu2,=,Nu3, % unico scopo degli '=' √® la leggibilit√†
                    Op4,    Op5,  Op6,
                    Nu4,Op2,Nu5,=,Nu6,
                      =,      =,    =,
@@ -53,9 +53,9 @@ calcolo_enigmatico(Nu1,Op1,Nu2,=,Nu3, % unico scopo degli '=' Ë la leggibilit‡
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- style_check(-singleton). % la singola cifra puÚ apparire anche una sola volta
+:- style_check(-singleton). % la singola cifra pu√≤ apparire anche una sola volta
 
-% si chiede solo la prima soluzione trovata, del resto se il problema Ë ben
+% si chiede solo la prima soluzione trovata, del resto se il problema √® ben
 % congegnato ne ammette appunto una sola
 
 % problemi generati da encalc2
@@ -69,7 +69,7 @@ test1 :-
 	time(calcolo_enigmatico([D,F,E], -,[  D,G],=,[D,I,E],
 	                             +,         +,        -,
                             [D,E,H], +,[  D,C],=,[D,A,F],
-							     =,         =,        =,
+				     =,         =,        =,
                             [J,E,C],//,[  C,C],=,[  D,A])),
 							!.
 
@@ -82,7 +82,7 @@ test2 :-
 	time(calcolo_enigmatico([  H,H], *,[  G,A],=,[I,F,A],
 	                             +,         -,        -,
                             [G,A,B],//,[    B],=,[  G,H],
-							     =,         =,        =,
+				     =,         =,        =,
                             [G,F,C], *,[    C],=,[I,I,H])),
 							!.
 
@@ -95,7 +95,7 @@ test3 :-
 	time(calcolo_enigmatico([  I,B], *,[  H,I],=,[H,I,B],
 	                             +,        //,        -,
                             [G,E,B], -,[  I,D],=,[G,A,J],
-							     =,         =,        =,
+				     =,         =,        =,
                             [G,D,B], -,[    J],=,[G,E,D])),
 							!.
 
@@ -110,7 +110,7 @@ test4 :-
 	time(calcolo_enigmatico([  A,B], *,[  C,A],=,[D,E,F],
 	                             +,        //,       //,
                             [  A,G],//,[    B],=,[    B],
-							     =,         =,        =,
+				     =,         =,        =,
                             [  G,D], -,[    H],=,[  G,A])),
 							!.
 
@@ -123,7 +123,7 @@ test5 :-
 	time(calcolo_enigmatico([  A,A], *,[    B],=,[C,D,E],
 	                             +,         -,        -,
                             [F,G,B],//,[    C],=,[  H,I],
-							     =,         =,        =,
+				     =,         =,        =,
                             [F,I,F], -,[    D],=,[F,B,G])),
 							!.
 
@@ -136,6 +136,6 @@ test6 :-
 	time(calcolo_enigmatico([  A,B], +,[  C,D],=,[  E,C],
 	                             *,         -,        +,
                             [  D,F], *,[  A,G],=,[B,E,G],
-							     =,         =,        =,
+				     =,         =,        =,
                             [C,B,B], +,[  H,D],=,[C,F,C])),
 							!.

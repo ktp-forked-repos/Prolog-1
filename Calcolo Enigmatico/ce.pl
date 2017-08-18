@@ -68,10 +68,10 @@ calcolo_enigmatico(Nu1,Op1,Nu2,=,Nu3, % unico scopo degli '=' è la leggibilità
 test1 :-
 	time(calcolo_enigmatico([D,F,E], -,[  D,G],=,[D,I,E],
 	                             +,         +,        -,
-                            [D,E,H], +,[  D,C],=,[D,A,F],
-				     =,         =,        =,
-                            [J,E,C],//,[  C,C],=,[  D,A])),
-							!.
+                                [D,E,H], +,[  D,C],=,[D,A,F],
+			             =,         =,        =,
+                                [J,E,C],//,[  C,C],=,[  D,A])),
+				!.
 
 %  HH *  GA = IFA     66 *  12 = 792
 %   +     -     -      +     -     -
@@ -81,10 +81,10 @@ test1 :-
 test2 :-
 	time(calcolo_enigmatico([  H,H], *,[  G,A],=,[I,F,A],
 	                             +,         -,        -,
-                            [G,A,B],//,[    B],=,[  G,H],
+                                [G,A,B],//,[    B],=,[  G,H],
 				     =,         =,        =,
-                            [G,F,C], *,[    C],=,[I,I,H])),
-							!.
+                                [G,F,C], *,[    C],=,[I,I,H])),
+			        !.
 
 %  IB *  HI = HIB     10 *  51 = 510
 %   +     /     -      +     /     -
@@ -94,10 +94,10 @@ test2 :-
 test3 :-
 	time(calcolo_enigmatico([  I,B], *,[  H,I],=,[H,I,B],
 	                             +,        //,        -,
-                            [G,E,B], -,[  I,D],=,[G,A,J],
+                                [G,E,B], -,[  I,D],=,[G,A,J],
 				     =,         =,        =,
-                            [G,D,B], -,[    J],=,[G,E,D])),
-							!.
+                                [G,D,B], -,[    J],=,[G,E,D])),
+				!.
 
 % problemi dalla Settimana Enigmistica
 
@@ -109,10 +109,10 @@ test3 :-
 test4 :-
 	time(calcolo_enigmatico([  A,B], *,[  C,A],=,[D,E,F],
 	                             +,        //,       //,
-                            [  A,G],//,[    B],=,[    B],
+                                [  A,G],//,[    B],=,[    B],
 				     =,         =,        =,
-                            [  G,D], -,[    H],=,[  G,A])),
-							!.
+                                [  G,D], -,[    H],=,[  G,A])),
+				!.
 
 %  AA *   B = CDE     33 *   8 = 264
 %   +     -     -      +     -     -
@@ -122,10 +122,10 @@ test4 :-
 test5 :-
 	time(calcolo_enigmatico([  A,A], *,[    B],=,[C,D,E],
 	                             +,         -,        -,
-                            [F,G,B],//,[    C],=,[  H,I],
+                                [F,G,B],//,[    C],=,[  H,I],
 				     =,         =,        =,
-                            [F,I,F], -,[    D],=,[F,B,G])),
-							!.
+                                [F,I,F], -,[    D],=,[F,B,G])),
+				!.
 
 %  AB +  CD =  EC     34 +  51 =  85
 %   *     -     +      *     -     +
@@ -135,7 +135,7 @@ test5 :-
 test6 :-
 	time(calcolo_enigmatico([  A,B], +,[  C,D],=,[  E,C],
 	                             *,         -,        +,
-                            [  D,F], *,[  A,G],=,[B,E,G],
+                                [  D,F], *,[  A,G],=,[B,E,G],
 				     =,         =,        =,
-                            [C,B,B], +,[  H,D],=,[C,F,C])),
-							!.
+                                [C,B,B], +,[  H,D],=,[C,F,C])),
+				!.

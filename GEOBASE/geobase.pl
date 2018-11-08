@@ -218,8 +218,9 @@ below.
 %   city(_,_,CITY,POPUL1), MV
 %   str_real(POPUL,POPUL1). MV
   db(population,of,capital,POPUL,CITY):-
-    city(_,_,CITY,POPUL1),
-    str_real(POPUL,POPUL1).
+    city(_,_,CITY,POPUL).
+%   city(_,_,CITY,POPUL1), MV
+%   str_real(POPUL,POPUL1). MV
 
   % Relationships about states
   db(abbreviation,of,state,ABBREVIATION,STATE):-
@@ -480,7 +481,7 @@ below.
     unit(E,UNIT),
     !,
 %   write(' ',UNIT). MV
-    format(' ~w',UNIT).
+    format(' ~w~n',UNIT).
   write_unit(_).
 
   write_solutions(0):-

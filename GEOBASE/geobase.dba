@@ -2,6 +2,11 @@
 % modificato " -> ' ed eliminato ' quando non era necessario
 % modificato numeri con esponente eX in interi
 %
+% N.B. le città mancanti nel database generano risultati del tipo:
+% Query: population of juneau?
+%  citizens
+% No solutions
+%
 % state(name,abbreviation,capital,population,area,state_number,city1,city2,city3,city4)
 state(alabama,al,montgomery,3894000,51700,22,birmingham,mobile,montgomery,huntsville).
 state(alaska,ak,juneau,401800,591000,49,anchorage,fairbanks,juneau,sitka).
@@ -59,6 +64,7 @@ city(alabama,al,mobile,200452).
 city(alabama,al,montgomery,177857).
 city(alabama,al,huntsville,142513).
 city(alabama,al,tuscaloosa,75143).
+% MANCANO ALTRE CITTA' DELLO STATO ALASKA
 city(alaska,ak,anchorage,174431).
 city(arizona,az,phoenix,789704).
 city(arizona,az,tucson,330537).
@@ -160,7 +166,9 @@ city(connecticut,ct,danbury,60470).
 city(connecticut,ct,greenwich,59578).
 city(connecticut,ct,bristol,57370).
 city(connecticut,ct,meriden,57118).
+% MANCANO ALTRE CITTA' DELLO STATO DELAWARE
 city(delaware,de,wilmington,70195).
+% QUESTO NON E' UNO STATO
 city('district of columbia',dc,washington,638333).
 city(florida,fl,jacksonville,540920).
 city(florida,fl,miami,346865).
@@ -185,6 +193,7 @@ city(georgia,ga,albany,74425).
 city(hawaii,hi,honolulu,762874).
 city(hawaii,hi,ewa,190037).
 city(hawaii,hi,koolaupoko,109373).
+% MANCANO ALTRE CITTA' DELLO STATO IDAHO
 city(idaho,id,boise,102249).
 city(illinois,il,chicago,3005172).
 city(illinois,il,rockford,139712).
@@ -230,6 +239,7 @@ city(louisiana,la,lafayette,80584).
 city(louisiana,la,'lake charles',75051).
 city(louisiana,la,kenner,66382).
 city(louisiana,la,monroe,57597).
+% MANCANO ALTRE CITTA' DELLO STATO MAINE
 city(maine,me,portland,61572).
 city(maryland,md,baltimore,786775).
 city(maryland,md,'silver spring',72893).
@@ -287,12 +297,16 @@ city(missouri,mo,springfield,133116).
 city(missouri,mo,independence,111797).
 city(missouri,mo,'st. joseph',76691).
 city(missouri,mo,columbia,62061).
+% MANCANO ALTRE CITTA' DELLO STATO MONTANA
 city(montana,mt,billings,66842).
 city(montana,mt,'great falls',56725).
+% MANCANO ALTRE CITTA' DELLO STATO NEBRASKA
 city(nebraska,ne,omaha,314255).
 city(nebraska,ne,lincoln,171932).
+% MANCANO ALTRE CITTA' DELLO STATO NEVADA
 city(nevada,nv,'las vegas',164674).
 city(nevada,nv,reno,100756).
+% MANCANO ALTRE CITTA' DELLO STATO NEW HAMPSHIRE
 city('new hampshire',nh,manchester,90936).
 city('new hampshire',nh,nashua,67865).
 city('new jersey',nj,newark,329248).
@@ -309,6 +323,7 @@ city('new jersey',nj,'cherry hill',68785).
 city('new jersey',nj,bayonne,65047).
 city('new jersey',nj,middletown,61615).
 city('new jersey',nj,irvington,61493).
+% MANCANO ALTRE CITTA' DELLO STATO NEW MEXICO
 city('new mexico',nm,albuquerque,331767).
 city('new york',ny,'new york',7071639).
 city('new york',ny,buffalo,357870).
@@ -331,6 +346,7 @@ city('north carolina',nc,winston-salem,131885).
 city('north carolina',nc,durham,100538).
 city('north carolina',nc,'high point',64107).
 city('north carolina',nc,fayetteville,59507).
+% MANCANO ALTRE CITTA' DELLO STATO NORTH DAKOTA, non potrò mai sapere dove è Carmen Sandiego!
 city('north dakota',nd,fargo,61308).
 city(ohio,oh,cleveland,573822).
 city(ohio,oh,columbus,564871).
@@ -352,22 +368,23 @@ city(oklahoma,ok,'oklahoma city',403213).
 city(oklahoma,ok,tulsa,360919).
 city(oklahoma,ok,lawton,80054).
 city(oklahoma,ok,norman,68020).
+% MANCANO ALTRE CITTA' DELLO STATO OREGON
 city(oregon,or,portland,366383).
 city(oregon,or,eugene,105664).
 city(oregon,or,salem,89233).
-city('pennsylvania',pa,philadelphia,1688210).
-city('pennsylvania',pa,pittsburgh,423938).
-city('pennsylvania',pa,erie,119123).
-city('pennsylvania',pa,allentown,103758).
-city('pennsylvania',pa,scranton,88117).
-city('pennsylvania',pa,'upper darby',84054).
-city('pennsylvania',pa,reading,78686).
-city('pennsylvania',pa,bethlehem,70419).
-city('pennsylvania',pa,'lower merion',59651).
-city('pennsylvania',pa,abingdon,59084).
-city('pennsylvania',pa,'bristol township',58733).
-city('pennsylvania',pa,'penn hills',57632).
-city('pennsylvania',pa,altoona,57078).
+city(pennsylvania,pa,philadelphia,1688210).
+city(pennsylvania,pa,pittsburgh,423938). % LET'S GO BUCS! RAISE IT!
+city(pennsylvania,pa,erie,119123).
+city(pennsylvania,pa,allentown,103758).
+city(pennsylvania,pa,scranton,88117).
+city(pennsylvania,pa,'upper darby',84054).
+city(pennsylvania,pa,reading,78686).
+city(pennsylvania,pa,bethlehem,70419).
+city(pennsylvania,pa,'lower merion',59651).
+city(pennsylvania,pa,abingdon,59084).
+city(pennsylvania,pa,'bristol township',58733).
+city(pennsylvania,pa,'penn hills',57632).
+city(pennsylvania,pa,altoona,57078).
 city('rhode island',ri,providence,156804).
 city('rhode island',ri,warwick,87123).
 city('rhode island',ri,cranston,71992).
@@ -376,6 +393,7 @@ city('south carolina',sc,columbia,101229).
 city('south carolina',sc,charleston,69855).
 city('south carolina',sc,'north charleston',62504).
 city('south carolina',sc,greenville,58242).
+% MANCANO ALTRE CITTA' DELLO STATO SOUTH DAKOTA
 city('south dakota',sd,'sioux falls',81343).
 city(tennessee,tn,memphis,646356).
 city(tennessee,tn,nashville,455651).
@@ -439,6 +457,7 @@ city(wisconsin,wi,racine,85725).
 city(wisconsin,wi,kenosha,77685).
 city(wisconsin,wi,'west allis',63982).
 city(wisconsin,wi,appleton,58913).
+% MANCANO ALTRE CITTA' DELLO STATO WYOMING
 city(wyoming,wy,casper,51016).
 % river(name,length,[states through which it flows])
 river(mississippi,3778,[minnesota,wisconsin,iowa,illinois,missouri,kentucky,tennessee,arkansas,mississippi,louisiana,louisiana]).

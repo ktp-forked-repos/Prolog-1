@@ -214,12 +214,12 @@ below.
   db(state,with,city,STATE,CITY):-
     city(STATE,_,CITY,_).
   db(population,of,city,POPUL,CITY):-
-    city(_,_,CITY,POPUL).
 %   city(_,_,CITY,POPUL1), MV
+    city(_,_,CITY,POPUL).
 %   str_real(POPUL,POPUL1). MV
   db(population,of,capital,POPUL,CITY):-
-    city(_,_,CITY,POPUL).
 %   city(_,_,CITY,POPUL1), MV
+    city(_,_,CITY,POPUL).
 %   str_real(POPUL,POPUL1). MV
 
   % Relationships about states
@@ -228,24 +228,26 @@ below.
   db(state,with,abbreviation,STATE,ABBREVIATION):-
     state(STATE,ABBREVIATION,_,_,_,_,_,_,_,_).
   db(area,of,state,AREA,STATE):-
-    state(STATE,_,_,_,AREA1,_,_,_,_,_),
-    str_real(AREA,AREA1).
+%   state(STATE,_,_,_,AREA1,_,_,_,_,_), MV
+    state(STATE,_,_,_,AREA,_,_,_,_,_).
+%   str_real(AREA,AREA1). MV
   db(capital,of,state,CAPITAL,STATE):-
     state(STATE,_,CAPITAL,_,_,_,_,_,_,_).
   db(state,with,capital,STATE,CAPITAL):-
     state(STATE,_,CAPITAL,_,_,_,_,_,_,_).
   db(population,of,state,POPULATION,STATE):-
-    state(STATE,_,_,POPUL,_,_,_,_,_,_),
-    str_real(POPULATION,POPUL).
+%   state(STATE,_,_,POPUL,_,_,_,_,_,_), MV
+    state(STATE,_,_,POPULATION,_,_,_,_,_,_).
+%   str_real(POPULATION,POPUL). MV
   db(state,border,state,STATE1,STATE2):-
     border(STATE2,_,LIST),
     member(STATE1,LIST).
 
   % Relationships about rivers
  db(length,of,river,LENGTH,RIVER):-
-    river(RIVER,LENGTH1,_),
+%   river(RIVER,LENGTH1,_), MV
+    river(RIVER,LENGTH,_).
 %   str_int(LENGTH,LENGTH1). MV
-    str_real(LENGTH,LENGTH1).
   db(state,with,river,STATE,RIVER):-
     river(RIVER,_,LIST),
     member(STATE,LIST).
@@ -263,14 +265,14 @@ below.
   db(state,with,point,STATE,POINT):-
     highlow(STATE,_,_,_,POINT,_).
   db(height,of,point,HEIGHT,POINT):-
-    highlow(_,_,_,_,POINT,H),
+%   highlow(_,_,_,_,POINT,H), MV
+    highlow(_,_,_,_,POINT,HEIGHT),
 %   str_int(HEIGHT,H), MV
-    str_real(HEIGHT,H),
     !.
   db(height,of,point,HEIGHT,POINT):-
-    highlow(_,_,POINT,H,_,_),
+%   highlow(_,_,POINT,H,_,_), MV
+    highlow(_,_,POINT,HEIGHT,_,_),
 %   str_int(HEIGHT,H), MV
-    str_real(HEIGHT,H),
     !.
 
   % Relationships about mountains
@@ -279,8 +281,9 @@ below.
   db(state,with,mountain,STATE,MOUNT):-
     mountain(STATE,_,MOUNT,_).
   db(height,of,mountain,HEIGHT,MOUNT):-
-    mountain(_,_,MOUNT,H1),
-    str_real(HEIGHT,H1).
+%   mountain(_,_,MOUNT,H1), MV
+    mountain(_,_,MOUNT,HEIGHT).
+%   str_real(HEIGHT,H1). MV
 
   % Relationships about lakes
   db(lake,in,state,LAKE,STATE):-
@@ -290,8 +293,9 @@ below.
     lake(LAKE,_,LIST),
     member(STATE,LIST).
   db(area,of,lake,AREA,LAKE):-
-    lake(LAKE,A1,_),
-    str_real(AREA,A1).
+%   lake(LAKE,A1,_), MV
+    lake(LAKE,AREA,_).
+%   str_real(AREA,A1). MV
 
   % Relationships about roads
   db(road,in,state,ROAD,STATE):-
@@ -487,14 +491,16 @@ below.
   write_solutions(0):-
     !,
 %   write('No solutions\n'). MV
-    writeln('No solutions'). 
+    writeln('No solutions').
   write_solutions(1):-
     !,
     nl.
   write_solutions(N):-
     !,
 %   writef('% Solutions\n',N). MV
-    format("~n~w Solutions~n",N). 
+% MV DA VEDERE
+% lo ~n iniziale è in eccesso nel caso in cui prima sia stata emessa un'unità di misura
+    format("~n~w Solutions~2n",N).
 
 % listlen([],0).
 % listlen([_|T],N):-
@@ -562,11 +568,11 @@ below.
     not(known_word(Y)),
     !,
 %   write("Unknown word: ",Y),nl. MV
-    format('Unknown word: ~w~n',Y). 
+    format('Unknown word: ~w~2n',Y).
 
   error(_):-
 %   write("Sorry, the sentence can't be recognized"). MV
-    writeln("Sorry, the sentence can't be recognized").
+    writeln("Sorry, the sentence can't be recognized~n").
 
   known_word(X):-
     str_real(X,_), % come eliminare questo ??? MV
@@ -943,20 +949,23 @@ below.
 
   eval(q_sel(E,gt,ATTR,VAL),ANS):-
     schema(ATTR,ASSOC,E),
-    db(ATTR,ASSOC,E,SVAL2,ANS),
-    str_real(SVAL2,VAL2),
+%   db(ATTR,ASSOC,E,SVAL2,ANS), MV
+    db(ATTR,ASSOC,E,VAL2,ANS),
+%   str_real(SVAL2,VAL2), MV
     VAL2 > VAL.
 
   eval(q_sel(E,lt,ATTR,VAL),ANS):-
     schema(ATTR,ASSOC,E),
-    db(ATTR,ASSOC,E,SVAL2,ANS),
-    str_real(SVAL2,VAL2),
+%   db(ATTR,ASSOC,E,SVAL2,ANS), MV
+    db(ATTR,ASSOC,E,VAL2,ANS),
+%   str_real(SVAL2,VAL2), MV
     VAL2 < VAL.
 
   eval(q_sel(E,eq,ATTR,VAL),ANS):-
     schema(ATTR,ASSOC,E),
-    db(ATTR,ASSOC,E,SVAL,ANS),
-    str_real(SVAL,VAL).
+%   db(ATTR,ASSOC,E,SVAL,ANS), MV
+    db(ATTR,ASSOC,E,VAL,ANS).
+%   str_real(SVAL,VAL). MV
 
   eval(q_not(E,TREE),ANS):-
     findall(X,eval(TREE,X),L),
@@ -987,8 +996,9 @@ below.
   sel_min(_,_,_,RES,RES,[]).
   sel_min(ENT,ATTR,MIN,_,RES,[H|T]):-
     schema(ATTR,ASSOC,ENT),
-    db(ATTR,ASSOC,ENT,VAL,H),
-    str_real(VAL,HH),
+%   db(ATTR,ASSOC,ENT,VAL,H), MV
+    db(ATTR,ASSOC,ENT,HH,H),
+%   str_real(VAL,HH), MV
     MIN > HH,
     !,
     sel_min(ENT,ATTR,HH,H,RES,T).
@@ -998,8 +1008,9 @@ below.
   sel_max(_,_,_,RES,RES,[]).
   sel_max(ENT,ATTR,MAX,_,RES,[H|T]):-
     schema(ATTR,ASSOC,ENT),
-    db(ATTR,ASSOC,ENT,VAL,H),
-    str_real(VAL,HH),
+%   db(ATTR,ASSOC,ENT,VAL,H), MV
+    db(ATTR,ASSOC,ENT,HH,H),
+%   str_real(VAL,HH), MV
     MAX < HH,
     !,
     sel_max(ENT,ATTR,HH,H,RES,T).

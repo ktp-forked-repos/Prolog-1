@@ -995,7 +995,7 @@ go :- % inizia la consultazione MV
   writeln('  which states border alabama'),
   writeln('  which rivers do not run through texas'),
   writeln('  which rivers run through states that border the state with the capital austin'),nl,
-  loop.
+  (loop -> true ; true). % era loop MV per uscire sempre con true
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % non definite in SWI DA VEDERE

@@ -195,11 +195,13 @@ below.
   ent(road,NUMBER):-
     road(NUMBER,_).
   ent(population,POPUL):-
-    city(_,_,_,POPUL1),
-    str_real(POPUL,POPUL1).
+%   city(_,_,_,POPUL1), MV
+    city(_,_,_,POPUL).
+%   str_real(POPUL,POPUL1). MV
   ent(population,S):-
-    state(_,_,_,POPUL,_,_,_,_,_,_),
-    str_real(S,POPUL).
+%   state(_,_,_,POPUL,_,_,_,_,_,_), MV
+    state(_,_,_,S,_,_,_,_,_,_).
+%   str_real(S,POPUL). MV
 
 %  The db predicate is used to establish relationships between
 %  entities. The first three parameters should always be instantiated
@@ -212,8 +214,9 @@ below.
   db(state,with,city,STATE,CITY):-
     city(STATE,_,CITY,_).
   db(population,of,city,POPUL,CITY):-
-    city(_,_,CITY,POPUL1),
-    str_real(POPUL,POPUL1).
+    city(_,_,CITY,POPUL).
+%   city(_,_,CITY,POPUL1), MV
+%   str_real(POPUL,POPUL1). MV
   db(population,of,capital,POPUL,CITY):-
     city(_,_,CITY,POPUL1),
     str_real(POPUL,POPUL1).
@@ -240,7 +243,8 @@ below.
   % Relationships about rivers
  db(length,of,river,LENGTH,RIVER):-
     river(RIVER,LENGTH1,_),
-    str_real(LENGTH,LENGTH1). % era str_int(LENGTH,LENGTH1) MV
+%   str_int(LENGTH,LENGTH1). MV
+    str_real(LENGTH,LENGTH1).
   db(state,with,river,STATE,RIVER):-
     river(RIVER,_,LIST),
     member(STATE,LIST).
@@ -259,11 +263,13 @@ below.
     highlow(STATE,_,_,_,POINT,_).
   db(height,of,point,HEIGHT,POINT):-
     highlow(_,_,_,_,POINT,H),
-    str_real(HEIGHT,H), % era str_int(HEIGHT,H) MV
+%   str_int(HEIGHT,H), MV
+    str_real(HEIGHT,H),
     !.
   db(height,of,point,HEIGHT,POINT):-
     highlow(_,_,POINT,H,_,_),
-    str_real(HEIGHT,H), % era str_int(HEIGHT,H) MV
+%   str_int(HEIGHT,H), MV
+    str_real(HEIGHT,H),
     !.
 
   % Relationships about mountains
@@ -297,7 +303,8 @@ below.
   db(E,in,continent,VAL,usa):-
     ent(E,VAL).
   db(name,of,_,X,X):-
-    nonvar(X). % era bound(X) MV
+% a bound(X). MV
+    nonvar(X).
 
 %predicates
 %  write_list(INTEGER,STRINGLIST)
@@ -426,16 +433,20 @@ below.
 %clauses
   loop:-
     write('Query: '),
-    readln(LIST), % era readln(STR) MV DA VEDERE conversione tutto in minuscolo
-    LIST \= [], % era STR >< '' MV
+%   readln(STR) % MV DA VEDERE conversione tutto in minuscolo
+    readln(LIST),
+%   STR >< '' MV
+    LIST \= [],
 %   scan(STR,LIST),         % Returns a list of words(symbols)
     filter(LIST,LIST1),     % Removes punctuation and words to be ignored
     pars(LIST1,E,Q),        % Parses queries
     findall(A,eval(Q,A),L),
-    sort(L,L1), % era unik(L,L1) a differenza dell'originale i risultati sono presentati in ordine alfabetico MV
+ %  unik(L,L1), MV a differenza dell'originale i risultati sono presentati in ordine alfabetico
+    sort(L,L1),
     write_list(0,L1),
     write_unit(E),
-    length(L1,N), % era listlen(L1,N) MV
+ %  listlen(L1,N) MV
+    length(L1,N),
     write_solutions(N),
     !,
     loop.
@@ -468,18 +479,21 @@ below.
   write_unit(E):-
     unit(E,UNIT),
     !,
-    format(' ~w',UNIT). % era write(' ',UNIT) MV
+%   write(' ',UNIT). MV
+    format(' ~w',UNIT).
   write_unit(_).
 
   write_solutions(0):-
     !,
-    writeln('No solutions'). % era write('No solutions\n') MV
+%   write('No solutions\n'). MV
+    writeln('No solutions'). 
   write_solutions(1):-
     !,
     nl.
   write_solutions(N):-
     !,
-    format("~n~w Solutions~n",N). % era writef('% Solutions\n',N) MV
+%   writef('% Solutions\n',N). MV
+    format("~n~w Solutions~n",N). 
 
 % listlen([],0).
 % listlen([_|T],N):-
@@ -508,12 +522,17 @@ below.
     entity(ENT).
 
   entn(E,N):-
-    atom_concat(E,s,N). % era concat(E,s,N) MV
+%   concat(E,s,N). MV
+    atom_concat(E,s,N).
   entn(E,N):-
-    var(E), % era free(E) MV
-    nonvar(N), % era bound(N) MV
-    atom_concat(X,ies,N), % era concat(X,ies,N) MV
-    atom_concat(X,y,E). % era concat(X,y,E) MV
+%   free(E), MV
+    var(E),
+%   bound(N), MV
+    nonvar(N),
+%   concat(X,ies,N), MV
+    atom_concat(X,ies,N),
+%   concat(X,y,E). MV
+    atom_concat(X,y,E).
   entn(E,E).
 
   entity(name):-
@@ -541,10 +560,12 @@ below.
     member(Y,LIST),
     not(known_word(Y)),
     !,
-    format('Unknown word: ~w~n',Y). % era write("Unknown word: ",Y),nl MV
+%   write("Unknown word: ",Y),nl. MV
+    format('Unknown word: ~w~n',Y). 
 
   error(_):-
-    writeln("Sorry, the sentence can't be recognized"). % era write("Sorry, the sentence can't be recognized") MV
+%   write("Sorry, the sentence can't be recognized"). MV
+    writeln("Sorry, the sentence can't be recognized").
 
   known_word(X):-
     str_real(X,_), % come eliminare questo ??? MV
@@ -619,10 +640,13 @@ below.
 
   get_cmpent([E|S],S,IND,ENT):-
     ent_end(S),
-    atom_concat(IND,E,ENT). % era concat(IND,E,ENT) MV
+%   concat(IND,E,ENT). MV
+    atom_concat(IND,E,ENT).
   get_cmpent([E|S1],S2,IND,ENT):-
-    atom_concat(IND,E,II), % era concat(IND,E,II) MV
-    atom_concat(II,' ',III), % era concat(II,' ',III) MV
+%   concat(IND,E,II), MV
+    atom_concat(IND,E,II),
+%   concat(II,' ',III), MV
+    atom_concat(II,' ',III),
     get_cmpent(S1,S2,III,ENT).
 
   ent_end([]).
@@ -983,19 +1007,30 @@ below.
 
 %goal
 go :- % inizia la consultazione MV
-  consult('GEOBASE.DBA'), % era consult("GEOBASE.DBA",data) MV
-  consult('GEOBASE.LAN'), % era consult("GEOBASE.LAN",language) MV
-  % erano tutti write('...'),nl, MV
+% consult("GEOBASE.DBA",data) MV
+  consult('GEOBASE.DBA'),
+% consult("GEOBASE.LAN",language) MV
+  consult('GEOBASE.LAN'),
+% write('Examples are:'),nl, MV
   writeln('Examples are:'),
+% write('  rivers that runs through texas'),nl, MV
   writeln('  rivers that runs through texas'),
+% write('  give me the cities in california'),nl, MV
   writeln('  give me the cities in california'),
+% write('  what is the biggest city in california'),nl, MV
   writeln('  what is the biggest city in california'),
+% write('  which rivers are longer than 1 thousand kilometers'),nl MV
   writeln('  which rivers are longer than 1 thousand kilometers'),
+% write('  what is the name of the state with the lowest point'),nl, MV
   writeln('  what is the name of the state with the lowest point'),
+% write('  which states border alabama'),nl, MV
   writeln('  which states border alabama'),
+% write('  which rivers do not run through texas'),nl, MV
   writeln('  which rivers do not run through texas'),
+% write('  which rivers run through states that border the state with the capital austin'),nl,nl,
   writeln('  which rivers run through states that border the state with the capital austin'),nl,
-  (loop -> true ; true). % era loop MV per uscire sempre con true
+% loop MV per uscire sempre con true
+  (loop -> true ; true).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % non definite in SWI DA VEDERE

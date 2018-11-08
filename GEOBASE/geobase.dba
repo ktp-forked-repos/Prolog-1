@@ -1,6 +1,8 @@
 % aggiunto .
 % modificato " -> ' ed eliminato ' quando non era necessario
 % modificato numeri con esponente eX in interi
+%
+% state(name,abbreviation,capital,population,area,state_number,city1,city2,city3,city4)
 state(alabama,al,montgomery,3894000,51700,22,birmingham,mobile,montgomery,huntsville).
 state(alaska,ak,juneau,401800,591000,49,anchorage,fairbanks,juneau,sitka).
 state(arizona,az,phoenix,2718000,114000,48,phoenix,tucson,mesa,tempe).
@@ -26,7 +28,7 @@ state(michigan,mi,lansing,9262000,58500,26,detroit,'grand rapids',warren,flint).
 state(minnesota,mn,'st. paul',4076000,84400,32,minneapolis,'st. paul',duluth,bloomington).
 state(mississippi,ms,jackson,2520000,47700,20,jackson,biloxi,meridian,hattiesburg).
 state(missouri,mo,'jefferson city',4916000,69700,24,'st. louis','kansas city',springfield,independence).
-state(montana,mt,helena,786.7,147000,41,billings,'great falls',butte,missoula).
+state(montana,mt,helena,786700,147000,41,billings,'great falls',butte,missoula).
 state(nebraska,ne,lincoln,1569000,77300,37,omaha,lincoln,'grand island','north platte').
 state(nevada,nv,'carson city',800500,110500,36,'las vegas',reno,'sunrise manor',sparks).
 state('new hampshire',nh,concord,920600,9279,9,manchester,nashua,concord,portsmouth).
@@ -51,6 +53,7 @@ state(washington,wa,olympia,41132000,68139,42,seattle,spokane,tacoma,bellevue).
 state('west virginia',wv,charleston,1950000,24200,35,charleston,huntington,wheeling,parkersburg).
 state(wisconsin,wi,madison,4700000,56153,30,milwaukee,madison,'green bay',racine).
 state(wyoming,wy,cheyenne,469557,97809,44,casper,cheyenne,laramie,'rock springs').
+% city(state,state_abbreviation,name,population)
 city(alabama,al,birmingham,284413).
 city(alabama,al,mobile,200452).
 city(alabama,al,montgomery,177857).
@@ -437,6 +440,7 @@ city(wisconsin,wi,kenosha,77685).
 city(wisconsin,wi,'west allis',63982).
 city(wisconsin,wi,appleton,58913).
 city(wyoming,wy,casper,51016).
+% river(name,length,[states through which it flows])
 river(mississippi,3778,[minnesota,wisconsin,iowa,illinois,missouri,kentucky,tennessee,arkansas,mississippi,louisiana,louisiana]).
 river(missouri,3968,[montana,'north dakota','south dakota',iowa,nebraska,missouri,missouri]).
 river(colorado,2333,[colorado,utah,arizona,nevada,california]).
@@ -483,6 +487,7 @@ river(tombigbee,658,[mississippi,alabama]).
 river(washita,805,[texas,oklahoma]).
 river('wateree catawba',636,['north carolina','south carolina']).
 river(white,1110,[arkansas,missouri,arkansas]).
+% border(state,state_abbreviation,[states that border it])
 border(alabama,al,[tennessee,georgia,florida,mississippi]).
 border(alaska,ak,[]).
 border(arizona,az,[utah,colorado,'new mexico',california,nevada]).
@@ -534,6 +539,7 @@ border(washington,wa,[idaho,oregon]).
 border('west virginia',wv,[pennsylvania,maryland,virginia,kentucky,ohio]).
 border(wisconsin,wi,[michigan,illinois,iowa,minnesota]).
 border(wyoming,wy,[montana,'south dakota',nebraska,colorado,utah,idaho]).
+% highlow(state,state_abbreviation,highest_point,highest_elevation,lowest_point,lowest_elevation)
 highlow(alabama,al,'cheaha mountain',734,'gulf of mexico',0).
 highlow(alaska,ak,'mount mckinley',6194,'pacific ocean',0).
 highlow(arizona,az,'humphreys peak',3851,'colorado river',21).
@@ -585,6 +591,7 @@ highlow(washington,wa,'mount rainier',4392,'pacific ocean',0).
 highlow('west virginia',wv,'spruce knob',1482,'potomac river',73).
 highlow(wisconsin,wi,'timms hill',595,'lake michigan',177).
 highlow(wyoming,wy,'gannett peak',4202,'belle fourche river',945).
+% mountain(state,state_abbreviation,name,height)
 mountain(alaska,ak,mckinley,6194).
 mountain(alaska,ak,'st. elias',5489).
 mountain(alaska,ak,foraker,5304).
@@ -635,6 +642,7 @@ mountain(california,ca,shasta,4317).
 mountain(california,ca,sill,4317).
 mountain(colorado,co,'el diente',4316).
 mountain(colorado,co,maroon,4315).
+% road(number,[states it passes through])
 road(95,[maine,'new hampshire','rhode island',connecticut,'new york','new jersey',delaware,maryland,'district of columbia',virginia,'north carolina','south carolina',georgia,florida]).
 road(90,[massachusetts,'new york',pennsylvania,ohio,indiana,illinois,wisconsin,minnesota,'south dakota',wyoming,montana,idaho,washington]).
 road(80,['new york','new jersey',pennsylvania,ohio,indiana,illinois,iowa,nebraska,wyoming,utah,nevada,california]).
@@ -675,6 +683,7 @@ road(79,[pennsylvania,'west virginia']).
 road(83,[pennsylvania,maryland]).
 road(86,[massachusetts,connecticut]).
 road(89,[vermont,'new hampshire']).
+% lake(name,area,[states it is in])
 lake(superior,82362,[michigan,wisconsin,minnesota]).
 lake(huron,59570,[michigan]).
 lake(michigan,58016,[michigan,indiana,illinois,wisconsin]).

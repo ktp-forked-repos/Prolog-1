@@ -310,8 +310,8 @@ below.
 % index([X|_],1,X):-
 %   !.
 % index([_|L],N,X):-
-%   N > 1,
-%   N1 is N - 1,
+%   N>1,
+%   N1=N-1,
 %   index(L,N1,X).
 
 % unik([],[]).
@@ -370,20 +370,20 @@ below.
 %   write_list(0,T).
 % write_list(3,[H|T]):-
 %   str_len(H,LEN),
-%   LEN > 13,
+%   LEN>13,
 %   !,
 %   write(H),
 %   nl,
 %   write_list(0,T).
 % write_list(N,[H|T]):-
 %   str_len(H,LEN),
-%   LEN > 13,
+%   LEN>13,
 %   !,
-%   N1 is N + 2,
+%   N1=N+2,
 %   writef('%-27 ',H),
 %   write_list(N1,T).
 % write_list(N,[H|T]):-
-%   N1 is N + 1,
+%   N1=N+1,
 %   writef('%-13 ',H),
 %   write_list(N1,T).
 
@@ -484,7 +484,7 @@ below.
 % listlen([],0).
 % listlen([_|T],N):-
 %   listlen(T,X),
-%   N is X + 1.
+%   N=X+1.
 
 /*************************************************************************
   ENTITY NAMES
@@ -998,7 +998,7 @@ go :- % inizia la consultazione MV
   loop.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% non definite DA VEDERE
+% non definite in SWI DA VEDERE
 
 str_real(A,R):-
         nonvar(A),!,

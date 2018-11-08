@@ -1,6 +1,6 @@
 Il programma GEOBASE convertito per SWI-Prolog.
 Era un demo prima di Turbo Prolog e poi di Visual Prolog.
-Se vi interessa una coversione della versione Tubo la trovate in questa repo:
+Se vi interessa una conversione della versione Tubo la trovate in questa repo:
 https://github.com/eugeneai/geobase
 
 Io mi sono basato sulla versione Visual, la quale è già "purgata" di tutte quelle parti

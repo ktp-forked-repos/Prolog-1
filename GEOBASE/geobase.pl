@@ -696,7 +696,7 @@ below.
     VAL is 1000000 * X.
   s_val([X|S],S,VAL):-
 %   str_real(X,VAL). MV
-    VAL is X.
+    VAL = X.
 
 %predicates
 %  nondeterm s_attr(STRINGLIST,STRINGLIST,STRING,QUERY)

@@ -438,8 +438,8 @@ below.
 %clauses
   loop:-
     write('Query: '),
-%   readln(STR) % MV DA VEDERE conversione tutto in minuscolo
-    readln(LIST),
+%   readln(STR) % MV
+    readln(LIST,_,_,_,_), % MV readln è deprecato ma quì è proprio cio che occorre
 %   STR >< '' MV
     LIST \= [],
 %   scan(STR,LIST),         % Returns a list of words(symbols)

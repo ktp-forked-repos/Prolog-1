@@ -5,7 +5,7 @@ https://github.com/eugeneai/geobase
 
 Io mi sono basato sulla versione Visual, la quale è già "purgata" di tutte quelle parti
 estremamente specifiche come per esempio i menù. Al momento non funzionano gli operatori
-and, or e not.
+and e or.
 
 Se mi è permessa una riflessione questo programma è molto simile ad un motore di
 ricerca, ovvero tenta di riconoscere alcune parole chiave e poi interroga il database.

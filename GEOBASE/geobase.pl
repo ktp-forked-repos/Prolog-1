@@ -644,8 +644,8 @@ below.
   get_ent(S1,S2,ENT):-
     get_cmpent(S1,S2,' ',E1),
 %   frontchar(E1,_,E), MV
-    normalize_space(atom(E),E1), % MV grazie rosettacode.org
-    ENT = E.
+    normalize_space(atom(ENT),E1). % MV grazie rosettacode.org
+%   ENT = E. MV
 
   get_cmpent([E|S],S,IND,ENT):-
     ent_end(S),

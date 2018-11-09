@@ -491,7 +491,7 @@ below.
   write_solutions(0):-
     !,
 %   write('No solutions\n'). MV
-    writeln('No solutions').
+    format('No solutions~2n').
   write_solutions(1):-
     !,
     nl.
@@ -572,10 +572,11 @@ below.
 
   error(_):-
 %   write("Sorry, the sentence can't be recognized"). MV
-    writeln("Sorry, the sentence can't be recognized~n").
+    format("Sorry, the sentence can't be recognized~2n").
 
   known_word(X):-
-    str_real(X,_), % come eliminare questo ??? MV
+%   str_real(X,_), MV
+    number(X),
     !.
   known_word(and):-
     !.
@@ -684,14 +685,17 @@ below.
   s_unit([UNIT|S],S,UNIT).
   s_val([X,thousand|S],S,VAL):-
     !,
-    str_real(X,XX),
-    VAL is 1000 * XX.
+%   str_real(X,XX), MV
+%   VAL is 1000 * XX. MV
+    VAL is 1000 * X.
   s_val([X,million|S],S,VAL):-
     !,
-    str_real(X,XX),
-    VAL is 1000000 * XX.
+%   str_real(X,XX), MV
+%   VAL is 1000000 * XX. MV
+    VAL is 1000000 * X.
   s_val([X|S],S,VAL):-
-    str_real(X,VAL).
+%   str_real(X,VAL). MV
+    VAL is X.
 
 %predicates
 %  nondeterm s_attr(STRINGLIST,STRINGLIST,STRING,QUERY)
@@ -1046,16 +1050,6 @@ go :- % inizia la consultazione MV
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % non definite in SWI DA VEDERE
-
-str_real(A,R):-
-        nonvar(A),!,
-        atom_string(A,S),
-        number_string(R,S).
-
-str_real(A,R):-
-        nonvar(R),!,
-        number_string(R,S),
-        atom_string(A,S).
 
 frontchar(A, C, Rest):-
         sub_atom(A,0,1,X,C),

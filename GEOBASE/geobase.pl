@@ -439,7 +439,7 @@ below.
   loop:-
     write('Query: '),
 %   readln(STR) % MV
-    readln(LIST,_,_,_,_), % MV readln è deprecato ma quì è proprio cio che occorre
+    readln(LIST,_,_,_,lowercase), % MV readln è deprecato ma quì è proprio cio che occorre
 %   STR >< '' MV
     LIST \= [],
 %   scan(STR,LIST),         % Returns a list of words(symbols)

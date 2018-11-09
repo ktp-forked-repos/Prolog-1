@@ -643,7 +643,8 @@ below.
     !.
   get_ent(S1,S2,ENT):-
     get_cmpent(S1,S2,' ',E1),
-    frontchar(E1,_,E),
+%   frontchar(E1,_,E), MV
+    normalize_space(atom(E),E1), % MV grazie rosettacode.org
     ENT = E.
 
   get_cmpent([E|S],S,IND,ENT):-
@@ -1047,12 +1048,3 @@ go :- % inizia la consultazione MV
   writeln('  which rivers run through states that border the state with the capital austin'),nl,
 % loop MV per uscire sempre con true
   (loop -> true ; true).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% non definite in SWI DA VEDERE
-
-frontchar(A, C, Rest):-
-        sub_atom(A,0,1,X,C),
-        sub_atom(A,1,X,0,Rest).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
